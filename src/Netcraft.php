@@ -120,7 +120,7 @@ class Netcraft extends Parser
 
             $event = [
                 'source'        => config("{$configBase}.parser.name"),
-                'ip'            => $fields['Source'],
+                'ip'            => $fields['ip'],
                 'domain'        => $fields['Domain'],
                 'uri'           => $fields['uri'],
                 'class'         => config("{$configBase}.feeds.{$feedName}.class"),
