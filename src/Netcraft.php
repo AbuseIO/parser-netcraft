@@ -50,7 +50,11 @@ class Netcraft extends Parser
             preg_match_all('/([\w\-]+): (.*)[ ]*\r?\n/', $attachment->getContent(), $regs);
             $fields = array_combine($regs[1], $regs[2]);
 
-            preg_match('/\[([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})\]/', $this->parsedMail->getBody(), $ips);
+            preg_match(
+                '/\[([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})\]/',
+                $this->parsedMail->getMessageBody(),
+                $ips
+            );
             if (count($ips) != 2) {
                 return $this->failed(
                     "Unable to collect required IP address from message body."
