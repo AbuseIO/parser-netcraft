@@ -47,7 +47,7 @@ class Netcraft extends Parser
                 continue;
             }
 
-            preg_match_all('/([\w\-]+): (.*)[ ]*\r?\n/', $attachment->getContent(), $regs);
+            preg_match_all('/([\w\-]+): (.*)[ ]*\r?\n/', str_replace("\r", "", $attachment->getContent()), $regs);
             $fields = array_combine($regs[1], $regs[2]);
 
             preg_match(
