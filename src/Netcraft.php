@@ -128,6 +128,13 @@ class Netcraft extends Parser
             $events[] = $event;
         }
 
+        if (empty($events)) {
+            return $this->failed(
+                config("{$configBase}.parser.name") .
+                " was unabled to collect any event(s) from the received email. Either corrupt sample or invalid config"
+            );
+        }
+
         return $this->success($events);
     }
 }
