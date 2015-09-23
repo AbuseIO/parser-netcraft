@@ -50,17 +50,38 @@ class Netcraft extends Parser
             preg_match_all('/([\w\-]+): (.*)[ ]*\r?\n/', str_replace("\r", "", $attachment->getContent()), $regs);
             $fields = array_combine($regs[1], $regs[2]);
 
+            // Retrieve the IP from the body, as xARF only allows a single source and netcraft is the only one actually
+            // sticking to the specifications. Sadly they use multiple templates we need to consider to full the IP
+            // address from.
+            $fields['ip'] = false;
+
+            // Match case 1, a single line with 'http* [x.x.x.x]' (note the space)
+            // This case is related to the normal ISP notifications
             preg_match(
                 '/\[([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})\]/',
                 $this->parsedMail->getMessageBody(),
-                $ips
+                $matches
             );
-            if (count($ips) != 2) {
+            if (count($matches) == 2 && $fields['ip'] == false) {
+                $fields['ip'] = $matches[1];
+            }
+
+            // Match case 2, somewhere a line will end (watch out for mime split!) 'address x.x.x.x.'
+            // This case is related to the upstream ISP notifications
+            preg_match(
+                '/address ([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})\./',
+                $this->parsedMail->getMessageBody(),
+                $matches
+            );
+            if (count($matches) == 2 && $fields['ip'] == false) {
+                $fields['ip'] = $matches[1];
+            }
+
+            // If there are still no matches, this would be the time to give up trying
+            if ($fields['ip'] == false) {
                 return $this->failed(
                     "Unable to collect required IP address from message body."
                 );
-            } else {
-                $fields['ip'] = $ips[1];
             }
 
             // We need this field to detect the feed, so we need to check it first
