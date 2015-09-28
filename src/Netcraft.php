@@ -31,13 +31,13 @@ class Netcraft extends Parser
     {
         // Generalize the local config based on the parser class name.
         $reflect = new ReflectionClass($this);
-        $configBase = 'parsers.' . $reflect->getShortName();
+        $this->configBase = 'parsers.' . $reflect->getShortName();
 
         Log::info(
             get_class($this) . ': Received message from: ' .
             $this->parsedMail->getHeader('from') . " with subject: '" .
             $this->parsedMail->getHeader('subject') . "' arrived at parser: " .
-            config("{$configBase}.parser.name")
+            config("{$this->configBase}.parser.name")
         );
 
         $events = [ ];
@@ -48,13 +48,37 @@ class Netcraft extends Parser
             }
 
             preg_match_all('/([\w\-]+): (.*)[ ]*\r?\n/', str_replace("\r", "", $attachment->getContent()), $regs);
-            $fields = array_combine($regs[1], $regs[2]);
+            $report = array_combine($regs[1], $regs[2]);
+
+            // We need this field to detect the feed, so we need to check it first
+            if (empty($report['Report-Type'])) {
+                return $this->failed(
+                    "Unable to detect feed because the required field Report-Type is missing."
+                );
+            }
+
+            // Handle aliasses first
+            foreach (config("{$this->configBase}.parser.aliases") as $alias => $real) {
+                if ($report['Report-Type'] == $alias) {
+                    $report['Report-Type'] = $real;
+                }
+            }
+
+            $this->feedName = $report['Report-Type'];
+
+            if (!$this->isKnownFeed()) {
+                return $this->failed(
+                    "Detected feed {$this->feedName} is unknown."
+                );
+            }
+
+            if (!$this->isEnabledFeed()) {
+                continue;
+            }
 
             // Retrieve the IP from the body, as xARF only allows a single source and netcraft is the only one actually
             // sticking to the specifications. Sadly they use multiple templates we need to consider to full the IP
             // address from.
-            $fields['ip'] = false;
-
             // Match case 1, a single line with 'http* [x.x.x.x]' (note the space)
             // This case is related to the normal ISP notifications
             preg_match(
@@ -62,8 +86,8 @@ class Netcraft extends Parser
                 $this->parsedMail->getMessageBody(),
                 $matches
             );
-            if (count($matches) == 2 && $fields['ip'] == false) {
-                $fields['ip'] = $matches[1];
+            if (count($matches) == 2 && empty($report['ip'])) {
+                $report['ip'] = $matches[1];
             }
 
             // Match case 2, somewhere a line will end (watch out for mime split!) 'address x.x.x.x.'
@@ -73,91 +97,50 @@ class Netcraft extends Parser
                 $this->parsedMail->getMessageBody(),
                 $matches
             );
-            if (count($matches) == 2 && $fields['ip'] == false) {
-                $fields['ip'] = $matches[1];
+            if (count($matches) == 2 && empty($report['ip'])) {
+                $report['ip'] = $matches[1];
             }
 
-            // If there are still no matches, this would be the time to give up trying
-            if ($fields['ip'] == false) {
+            if (!$this->hasRequiredFields($report)) {
                 return $this->failed(
-                    "Unable to collect required IP address from message body."
+                    "Required field {$this->requiredField} is missing or the config is incorrect."
                 );
             }
 
-            // We need this field to detect the feed, so we need to check it first
-            if (empty($fields['Report-Type'])) {
-                return $this->failed(
-                    "Unable to detect feed because the required field Report-Type is missing."
-                );
-            }
-
-            // Handle aliasses first
-            foreach (config("{$configBase}.parser.aliases") as $alias => $real) {
-                if ($fields['Report-Type'] == $alias) {
-                    $fields['Report-Type'] = $real;
-                }
-            }
-
-            $feedName = $fields['Report-Type'];
-
-            if (empty(config("{$configBase}.feeds.{$feedName}"))) {
-                return $this->failed("Detected feed '{$feedName}' is unknown.");
-            }
-
-            $columns = array_filter(config("{$configBase}.feeds.{$feedName}.fields"));
-            if (count($columns) > 0) {
-                foreach ($columns as $column) {
-                    if (!isset($fields[$column])) {
-                        return $this->failed(
-                            "Required field ${column} is missing in the report or config is incorrect."
-                        );
-                    }
-                }
-            }
-
-            if (config("{$configBase}.feeds.{$feedName}.enabled") !== true) {
-                continue;
-            }
+            $report = $this->applyFilters($report);
 
             // Manually update some fields for easier handling
-            if ($fields['Report-Type'] == 'phishing') {
-                $fields['uri'] = str_replace($fields['Service']."://".$fields['Domain'], "", $fields['Source']);
+            if ($report['Report-Type'] == 'phishing') {
+                $report['uri'] = str_replace($report['Service']."://".$report['Domain'], "", $report['Source']);
             }
 
-            if ($fields['Report-Type'] == 'malware-attack') {
+            if ($report['Report-Type'] == 'malware-attack') {
                 // Download-Link to domain/uri
-                $url_info = parse_url($fields['Download-Link']);
+                $url_info = parse_url($report['Download-Link']);
                 if (!empty($url_info['host'])) {
-                    $fields['Domain'] = $url_info['host'];
+                    $report['Domain'] = $url_info['host'];
                 } else {
-                    $fields['Domain'] = false;
+                    $report['Domain'] = false;
                 }
                 if (!empty($url_info['path'])) {
-                    $fields['uri'] = $url_info['path'];
+                    $report['uri'] = $url_info['path'];
                 } else {
-                    $fields['uri'] = false;
+                    $report['uri'] = false;
                 }
             }
 
             $event = [
-                'source'        => config("{$configBase}.parser.name"),
-                'ip'            => $fields['ip'],
-                'domain'        => $fields['Domain'],
-                'uri'           => $fields['uri'],
-                'class'         => config("{$configBase}.feeds.{$feedName}.class"),
-                'type'          => config("{$configBase}.feeds.{$feedName}.type"),
-                'timestamp'     => strtotime($fields['Date']),
-                'information'   => json_encode($fields),
+                'source'        => config("{$this->configBase}.parser.name"),
+                'ip'            => $report['ip'],
+                'domain'        => $report['Domain'],
+                'uri'           => $report['uri'],
+                'class'         => config("{$this->configBase}.feeds.{$this->feedName}.class"),
+                'type'          => config("{$this->configBase}.feeds.{$this->feedName}.type"),
+                'timestamp'     => strtotime($report['Date']),
+                'information'   => json_encode($report),
             ];
 
             $events[] = $event;
-        }
-
-        if (empty($events)) {
-            return $this->failed(
-                config("{$configBase}.parser.name") .
-                " was unabled to collect any event(s) from the received email. Either corrupt sample or invalid config"
-            );
         }
 
         return $this->success($events);
