@@ -24,7 +24,7 @@ class Netcraft extends Parser
     public function parse()
     {
         foreach ($this->parsedMail->getAttachments() as $attachment) {
-            if ($attachment->filename != 'report.txt') {
+            if ($attachment->filename != config("{$this->configBase}.parser.report_file")) {
                 continue;
             }
 
@@ -37,7 +37,6 @@ class Netcraft extends Parser
 
                 // We need this field to detect the feed, so we need to check it first
                 if (!empty($report['Report-Type'])) {
-
                     // Handle aliasses first
                     foreach (config("{$this->configBase}.parser.aliases") as $alias => $real) {
                         if ($report['Report-Type'] == $alias) {
@@ -49,7 +48,6 @@ class Netcraft extends Parser
 
                     // If feed is known and enabled, validate data and save report
                     if ($this->isKnownFeed() && $this->isEnabledFeed()) {
-
                         /*
                          * Retrieve the IP from the body, as xARF only allows a single source and netcraft is the
                          * only one actually sticking to the specifications. Sadly they use multiple templates we
@@ -60,27 +58,27 @@ class Netcraft extends Parser
                          * Match case 1, a single line with 'http* [x.x.x.x]' (note the space)
                          * This case is related to the normal ISP notifications
                          */
-                        preg_match(
+                        /*preg_match(
                             '/\[([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})\]/',
                             $this->parsedMail->getMessageBody(),
                             $matches
                         );
                         if (count($matches) == 2 && empty($report['ip'])) {
                             $report['ip'] = $matches[1];
-                        }
+                        }*/
 
                         /*
                          * Match case 2, somewhere a line will end (watch out for mime split!) 'address x.x.x.x.'
                          * This case is related to the upstream ISP notifications
                          */
-                        preg_match(
+                        /*preg_match(
                             '/address ([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})\./',
                             $this->parsedMail->getMessageBody(),
                             $matches
                         );
                         if (count($matches) == 2 && empty($report['ip'])) {
                             $report['ip'] = $matches[1];
-                        }
+                        }*/
 
                         // Sanity check
                         if ($this->hasRequiredFields($report) === true) {
@@ -89,7 +87,8 @@ class Netcraft extends Parser
 
                             // Manually update some fields for easier handling
                             if ($report['Report-Type'] == 'phishing') {
-                                $report['uri'] = str_replace(
+                                $report['Domain'] = str_replace('www.', '', $report['Domain']);
+                                $report['Uri'] = str_replace(
                                     $report['Service']."://".$report['Domain'],
                                     "",
                                     $report['Source']
@@ -97,25 +96,18 @@ class Netcraft extends Parser
                             }
 
                             if ($report['Report-Type'] == 'malware-attack') {
-                                // Download-Link to domain/uri
+                                // Download-Link to Domain / Uri
                                 $url_info = parse_url($report['Download-Link']);
-                                if (!empty($url_info['host'])) {
-                                    $report['Domain'] = $url_info['host'];
-                                } else {
-                                    $report['Domain'] = false;
-                                }
-                                if (!empty($url_info['path'])) {
-                                    $report['uri'] = $url_info['path'];
-                                } else {
-                                    $report['uri'] = false;
-                                }
+
+                                $report['Domain'] = (!empty($url_info['host'])) ? str_replace('www.', '', $url_info['host']) : false;
+                                $report['Uri'] = (!empty($url_info['path'])) ? $url_info['path'] : false;
                             }
 
                             $this->events[] = [
                                 'source'        => config("{$this->configBase}.parser.name"),
-                                'ip'            => $report['ip'],
+                                'ip'            => $report['Source'],
                                 'domain'        => $report['Domain'],
-                                'uri'           => $report['uri'],
+                                'uri'           => $report['Uri'],
                                 'class'         => config("{$this->configBase}.feeds.{$this->feedName}.class"),
                                 'type'          => config("{$this->configBase}.feeds.{$this->feedName}.type"),
                                 'timestamp'     => strtotime($report['Date']),

@@ -4,6 +4,7 @@ return [
     'parser' => [
         'name'          => 'Netcraft',
         'enabled'       => true,
+        'report_file'   => 'report.txt',
         'sender_map'    => [
             '/takedown-response.*@netcraft.com/',
         ],
@@ -25,7 +26,6 @@ return [
                 'Source',
                 'Date',
                 'Domain',
-                'ip',
             ],
         ],
 
@@ -39,7 +39,6 @@ return [
                 'Source',
                 'Date',
                 'Download-Link',
-                'ip',
             ],
         ],
     ],
