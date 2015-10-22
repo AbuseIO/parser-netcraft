@@ -2,14 +2,10 @@
 
 namespace AbuseIO\Parsers;
 
-use Ddeboer\DataImport\Reader;
-use Ddeboer\DataImport\Writer;
-use Ddeboer\DataImport\Filter;
-
 class Netcraft extends Parser
 {
     /**
-     * Create a new Blocklistde instance
+     * Create a new Netcraft instance
      */
     public function __construct($parsedMail, $arfMail)
     {
@@ -140,3 +136,4 @@ class Netcraft extends Parser
         return $this->success();
     }
 }
+
