@@ -136,4 +136,3 @@ class Netcraft extends Parser
         return $this->success();
     }
 }
-

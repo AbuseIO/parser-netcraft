@@ -26,6 +26,7 @@ return [
                 'Source',
                 'Date',
                 'Domain',
+                'Ip',
             ],
         ],
 
@@ -39,6 +40,7 @@ return [
                 'Source',
                 'Date',
                 'Download-Link',
+                'Ip',
             ],
         ],
     ],
