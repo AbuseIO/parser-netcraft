@@ -14,7 +14,7 @@ class Netcraft extends Parser
 
     /**
      * Parse attachments
-     * @return Array    Returns array with failed or success data
+     * @return array    Returns array with failed or success data
      *                  (See parser-common/src/Parser.php) for more info.
      */
     public function parse()
@@ -96,12 +96,16 @@ class Netcraft extends Parser
 
                             // Manually update some fields for easier handling
                             if ($report['Report-Type'] == 'phishing') {
+
+                                if (preg_match(
+                                    "/{$report['Service']}:\/\/.*{$report['Domain']}(.*)/",
+                                    $report['Source'],
+                                    $matches
+                                )) {
+                                    $report['Uri'] = $matches[1];
+                                }
+
                                 $report['Domain'] = str_replace('www.', '', $report['Domain']);
-                                $report['Uri'] = str_replace(
-                                    $report['Service']."://".$report['Domain'],
-                                    "",
-                                    $report['Source']
-                                );
                             }
 
                             if ($report['Report-Type'] == 'malware-attack') {
