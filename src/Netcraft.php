@@ -2,10 +2,17 @@
 
 namespace AbuseIO\Parsers;
 
+/**
+ * Class Netcraft
+ * @package AbuseIO\Parsers
+ */
 class Netcraft extends Parser
 {
     /**
      * Create a new Netcraft instance
+     *
+     * @param \PhpMimeMailParser\Parser $parsedMail phpMimeParser object
+     * @param array $arfMail array with ARF detected results
      */
     public function __construct($parsedMail, $arfMail)
     {
