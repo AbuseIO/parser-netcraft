@@ -1,6 +1,7 @@
 <?php
 
 namespace AbuseIO\Parsers;
+use AbuseIO\Models\Incident;
 
 /**
  * Class Netcraft
@@ -128,16 +129,19 @@ class Netcraft extends Parser
                                 $report['Uri'] = (!empty($url_info['path'])) ? $url_info['path'] : false;
                             }
 
-                            $this->events[] = [
-                                'source'        => config("{$this->configBase}.parser.name"),
-                                'ip'            => $report['Ip'],
-                                'domain'        => $report['Domain'],
-                                'uri'           => $report['Uri'],
-                                'class'         => config("{$this->configBase}.feeds.{$this->feedName}.class"),
-                                'type'          => config("{$this->configBase}.feeds.{$this->feedName}.type"),
-                                'timestamp'     => strtotime($report['Date']),
-                                'information'   => json_encode($report),
-                            ];
+                            $incident = new Incident();
+                            $incident->source      = config("{$this->configBase}.parser.name");
+                            $incident->source_id   = false;
+                            $incident->ip          = $report['Ip'];
+                            $incident->domain      = $report['Domain'];
+                            $incident->uri         = $report['Uri'];
+                            $incident->class       = config("{$this->configBase}.feeds.{$this->feedName}.class");
+                            $incident->type        = config("{$this->configBase}.feeds.{$this->feedName}.type");
+                            $incident->timestamp   = strtotime($report['Date']);
+                            $incident->information = json_encode($report);
+
+                            $this->events[] = $incident;
+
                         }
                     }
                 }
