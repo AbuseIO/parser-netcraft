@@ -1,6 +1,7 @@
 <?php
 
 namespace AbuseIO\Parsers;
+
 use AbuseIO\Models\Incident;
 
 /**
@@ -99,7 +100,7 @@ class Netcraft extends Parser
 
                         // Sanity check
                         if ($this->hasRequiredFields($report) === true) {
-                            // Event has all requirements met, filter and add!
+                            // incident has all requirements met, filter and add!
                             $report = $this->applyFilters($report);
 
                             // Manually update some fields for easier handling
@@ -140,7 +141,7 @@ class Netcraft extends Parser
                             $incident->timestamp   = strtotime($report['Date']);
                             $incident->information = json_encode($report);
 
-                            $this->events[] = $incident;
+                            $this->incidents[] = $incident;
 
                         }
                     }
