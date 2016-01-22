@@ -17,7 +17,7 @@ return [
 
     'feeds' => [
         'phishing' => [
-            'class'     => 'Phishing website',
+            'class'     => 'PHISING_WEBSITE',
             'type'      => 'Abuse',
             'enabled'   => true,
             'fields'    => [
@@ -31,7 +31,7 @@ return [
         ],
 
         'malware-attack' => [
-            'class'     => 'Compromised website',
+            'class'     => 'COMPROMISED_WEBSITE',
             'type'      => 'Abuse',
             'enabled'   => true,
             'fields'    => [
