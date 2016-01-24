@@ -4,7 +4,7 @@ return [
     'parser' => [
         'name'          => 'Netcraft',
         'enabled'       => true,
-        'report_file'   => 'report.txt',
+        'report_file'   => '/report.txt/i',
         'sender_map'    => [
             '/takedown-response.*@netcraft.com/',
         ],
