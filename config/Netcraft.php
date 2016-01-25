@@ -18,7 +18,7 @@ return [
     'feeds' => [
         'phishing' => [
             'class'     => 'PHISING_WEBSITE',
-            'type'      => 'Abuse',
+            'type'      => 'ABUSE',
             'enabled'   => true,
             'fields'    => [
                 'Report-Type',
@@ -32,7 +32,7 @@ return [
 
         'malware-attack' => [
             'class'     => 'COMPROMISED_WEBSITE',
-            'type'      => 'Abuse',
+            'type'      => 'ABUSE',
             'enabled'   => true,
             'fields'    => [
                 'Report-Type',
