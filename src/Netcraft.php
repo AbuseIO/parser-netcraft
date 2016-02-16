@@ -102,37 +102,20 @@ class Netcraft extends Parser
 
                                 // Manually update some fields for easier handling
                                 if ($report['Report-Type'] == 'phishing') {
-
-                                    if (preg_match(
-                                        "/{$report['Service']}:\/\/.*{$report['Domain']}(.*)/",
-                                        $report['Source'],
-                                        $matches
-                                    )) {
-                                        $report['Uri'] = $matches[1];
-                                    }
-
-                                    $report['Domain'] = str_replace('www.', '', $report['Domain']);
+                                    $url = $report['Source'];
                                 }
 
                                 if ($report['Report-Type'] == 'malware-attack') {
                                     // Download-Link to Domain / Uri
-                                    $url_info = parse_url($report['Download-Link']);
-
-                                    if (!empty($url_info['host'])) {
-                                        $report['Domain'] = str_replace('www.', '', $url_info['host']);
-                                    } else {
-                                        $report['Domain'] = false;
-                                    }
-
-                                    $report['Uri'] = (!empty($url_info['path'])) ? $url_info['path'] : false;
+                                    $url = $report['Download-Link'];
                                 }
 
                                 $incident = new Incident();
                                 $incident->source      = config("{$this->configBase}.parser.name");
                                 $incident->source_id   = false;
                                 $incident->ip          = $report['Ip'];
-                                $incident->domain      = $report['Domain'];
-                                $incident->uri         = $report['Uri'];
+                                $incident->domain      = getDomain($url);
+                                $incident->uri         = getUri($url);
                                 $incident->class       = config("{$this->configBase}.feeds.{$this->feedName}.class");
                                 $incident->type        = config("{$this->configBase}.feeds.{$this->feedName}.type");
                                 $incident->timestamp   = strtotime($report['Date']);
