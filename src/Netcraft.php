@@ -115,7 +115,6 @@ class Netcraft extends Parser
                                 $incident->source_id   = false;
                                 $incident->ip          = $report['Ip'];
                                 $incident->domain      = empty($url) ? false : getDomain($url);
-                                $incident->uri         = empty($url) ? false : getUri($url);
                                 $incident->class       = config("{$this->configBase}.feeds.{$this->feedName}.class");
                                 $incident->type        = config("{$this->configBase}.feeds.{$this->feedName}.type");
                                 $incident->timestamp   = strtotime($report['Date']);
