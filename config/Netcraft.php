@@ -17,7 +17,7 @@ return [
 
     'feeds' => [
         'phishing' => [
-            'class'     => 'PHISING_WEBSITE',
+            'class'     => 'PHISHING_WEBSITE',
             'type'      => 'ABUSE',
             'enabled'   => true,
             'fields'    => [
