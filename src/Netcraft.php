@@ -29,7 +29,7 @@ class Netcraft extends Parser
     public function parse()
     {
         foreach ($this->parsedMail->getAttachments() as $attachment) {
-            if (preg_match(config("{$this->configBase}.parser.report_file"), $attachment->filename)) {
+            if (preg_match(config("{$this->configBase}.parser.report_file"), $attachment->getFilename())) {
                 if (preg_match_all(
                     '/([\w\-]+): (.*)[ ]*\r?\n/',
                     str_replace("\r", "", $attachment->getContent()),
