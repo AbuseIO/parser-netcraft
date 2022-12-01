@@ -1,0 +1,227 @@
+Received: from localhost (localhost [127.0.0.1])
+	by mail.isp.tld (Postfix) with ESMTP id 35C69AF15F
+	for <abuse@isp.tld>; Thu, 13 Oct 2022 13:52:49 +0200 (CEST)
+X-Virus-Scanned: amavisd-new at isp.tld
+X-Spam-Flag: NO
+X-Spam-Score: -0.51
+X-Spam-Level:
+X-Spam-Status: No, score=-0.51 required=3.8 tests=[HTML_IMAGE_ONLY_08=1.781,
+	HTML_MESSAGE=0.001, RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_PASS=-0.001,
+	SPF_PASS=-0.001, T_REMOTE_IMAGE=0.01] autolearn=disabled
+X-Spam-Languages: nl en
+Authentication-Results-Original: mail.isp.tld (amavisd-new);	dkim=pass
+ (2048-bit key) header.d=netcraft.com
+Received: from mail.isp.tld ([127.0.0.1])
+	by localhost (mail.isp.tld [127.0.0.1]) (amavisd-new, port 10024)
+	with LMTP id tKf7vApzR6wh for <abuse@isp.tld>;
+	Thu, 13 Oct 2022 13:52:48 +0200 (CEST)
+Received-SPF: Pass (sender SPF authorized) identity=mailfrom; client-ip=52.31.138.216; helo=mail2.netcraft.com; envelope-from=takedown-response+36582981@netcraft.com; receiver=abuse@isp.tld 
+Received: from mail2.netcraft.com (mail2.netcraft.com [52.31.138.216])
+	by mail.isp.tld (Postfix) with ESMTPS id 71F28AF16F
+	for <abuse@isp.tld>; Thu, 13 Oct 2022 13:52:48 +0200 (CEST)
+Received: from barb.netcraft.com (ip-10-8-0-151.eu-west-1.compute.internal [10.8.0.151])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail2.netcraft.com (Postfix) with ESMTPS id 5B7D071BA6
+	for <abuse@isp.tld>; Thu, 13 Oct 2022 12:52:48 +0100 (BST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mail2.netcraft.com 5B7D071BA6
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=netcraft.com;
+	s=default202103; t=1665661968;
+	bh=LOdWAQTtPfYQZLhMjolsAIzW41N3IqGIpr4zkavkf7k=;
+	h=Date:From:Subject:To:From;
+	b=hO1o6UzqVLYsGLXS5hzO/FWaCjd2apcvKc1zoR0Cb7ZpAGvghb04Q6s43NT3UAiTF
+	 YHAEqB0DYX3VNPXi/Pc5yjpUbsVVeQ/YPRQJv5PDhw6GA/2leWPm2l4x8XRtnPijoD
+	 5z43p1CduIfGkCbD9TGMtL0r0LahxFOETWBm/iBlNBoT/pC/9Sj3YSodMVm4JvsjWD
+	 WGjQtwJOdtHYKMjJQ2RP0rGDqUYi68qNeUmRuxalshM5CevrK7jI/z3TQnXqyGJsyA
+	 JrDW2Trfu5YGQVGIDeQBkKWhigzFlJgOG903uwPHirt518AC+DprAu40g3+uZ7s3Tl
+	 2IFOoIMkFRO4w==
+Received: by barb.netcraft.com (Postfix, from userid 507)
+	id 5921BCD1; Thu, 13 Oct 2022 11:52:48 +0000 (UTC)
+Content-Transfer-Encoding: 7bit
+Content-Type: multipart/report; boundary="_----------=_1665661968350587713"; report-type="feedback-report"
+Date: Thu, 13 Oct 2022 11:52:48 +0000
+From: Netcraft Takedown Service <takedown-response+36582981@netcraft.com>
+Subject: Issue 12345678: Server involved in fraud at 10.1.2.3
+To: abuse@isp.tld
+Message-Id: <e684634d44f08b18e86e40d85d87a992@takedown.netcraft.com>
+X-Mailer: MIME::Lite 3.030 (F2.85; T2.17; A2.20; B3.15; Q3.13)
+Return-Path: takedown-response+36582981@netcraft.com
+MIME-Version: 1.0
+
+--_----------=_1665661968350587713
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="UTF-8"
+
+Hallo,
+
+We hebben een e-mailserver op uw netwerk ontdekt die frauduleuze e-mailberichten verzendt.
+
+De server heeft het IP-adres 10.1.2.3.
+
+Deze aanval benadeelt één van onze klanten, BANK Inc., te vinden op https://www.bank.tld/en/retail/login.
+
+We hebben een voorbeeld van een frauduleuze e-mail bijgevoegd die de betrokkenheid van de e-mailserver aantoont. Sluit deze aanval zo snel mogelijk af.
+
+Meer informatie over het gedetecteerde probleem vindt u op: https://incident.netcraft.com/ab0cd12ef012/
+
+Met vriendelijke groet,
+
+Netcraft
+
+Telefoon: +44(0)1225 447500
+Fax: +44(0)1225 448600
+Netcraft Issue Nummer: 12345678
+
+Geef een reply op deze mail voor contact met ons over deze melding. Let op: reacties worden wel geregistreerd, maar niet altijd gelezen. Ben je van mening dat een melding onterecht is, of verdere ondersteuning wenst, meld dit dan aan: takedown@netcraft.com.
+
+Deze mail kan worden geconverteerd met x-arf-tools. Bezoek http://www.xarf.org/ voor meer informatie over x-arf.
+-------------------
+Hello,
+
+We have discovered an email server on your network that is sending fraudulent e-mail messages.
+
+The server has the IP address 10.1.2.3.
+
+This attack targets our customer, BANK Inc., website URL https://www.bank.tld/en/retail/login.
+
+We have attached an example fraudulent e-mail demonstrating the e-mail server's involvement.  Please close down this attack as soon as possible.
+
+More information about the detected issue is provided at https://incident.netcraft.com/ab0cd12ef012/
+
+Many thanks,
+
+Netcraft
+
+Phone: +44(0)1225 447500
+Fax: +44(0)1225 448600
+Netcraft Issue Number: 12345678
+
+To contact us about updates regarding this attack, please respond to this email. Please note: replies to this address will be logged, but aren't always read. If you believe you have received this email in error, or you require further support, please contact: takedown@netcraft.com.
+
+This mail can be parsed with x-arf tools. Visit http://www.xarf.org/ for more information about x-arf.
+--_----------=_1665661968350587713
+Content-Disposition: inline
+Content-Length: 51
+Content-Transfer-Encoding: binary
+Content-Type: message/feedback-report
+X-Mailer: MIME::Lite 3.030 (F2.85; T2.17; A2.20; B3.15; Q3.13)
+Date: Thu, 13 Oct 2022 11:52:48 +0000
+
+Feedback-Type: xarf
+User-Agent: Netcraft
+Version: 1
+--_----------=_1665661968350587713
+Content-Disposition: attachment; filename="xarf.json"
+Content-Transfer-Encoding: base64
+Content-Type: application/json; charset=utf-8; name=xarf.json; name="xarf.json"
+X-Mailer: MIME::Lite 3.030 (F2.85; T2.17; A2.20; B3.15; Q3.13)
+Date: Thu, 13 Oct 2022 11:52:48 +0000
+
+eyJWZXJzaW9uIjoiMSIsIlJlcG9ydGVySW5mbyI6eyJSZXBvcnRlck9yZ0VtYWlsIjoidGFrZWRv
+d24tcmVzcG9uc2UrMTIzNDU2NzhAbmV0Y3JhZnQuY29tIiwiUmVwb3J0ZXJPcmdEb21haW4iOiJu
+ZXRjcmFmdC5jb20iLCJSZXBvcnRlck9yZyI6Ik5ldGNyYWZ0In0sIlJlcG9ydCI6eyJSZXBvcnRT
+dWJUeXBlIjoiUGhpc2hpbmcgVVJMIE1haWwgU2VydmVyIiwiUmVwb3J0ZXJDYXNlSUQiOiIxMjM0
+NTY3OCIsIlJlcG9ydGVyTm90ZXMiOiJTZWUgaHR0cHM6Ly9pbmNpZGVudC5uZXRjcmFmdC5jb20v
+YWIwY2QxMmVmMDEyLyBmb3IgbW9yZSBpbmZvcm1hdGlvbiIsIlJlcG9ydFR5cGUiOiJTcGFtIiwi
+UmVwb3J0Q2xhc3MiOiJBY3Rpdml0eSIsIkRhdGUiOiIyMDIyLTEwLTEzVDExOjUyOjE2WiIsIlNh
+bXBsZXMiOlt7IkNvbnRlbnRUeXBlIjoibWVzc2FnZS9yZmM4MjIiLCJCYXNlNjRFbmNvZGVkIjp0
+cnVlLCJQYXlsb2FkIjoiUTI5dWRHVnVkQzFVZVhCbE9pQnRkV3gwYVhCaGNuUXZZV3gwWlhKdVlY
+UnBkbVU3RFFvZ1ltOTFibVJoY25rOVlqRmZObUpqTkRBNFlqaGxaakkyWVRRMk1EQmlZMkV5WlRC
+ak9EaGlNVGxpTVRZTkNrUmhkR1U2SUZSMVpTd2dNVEVnVDJOMElESXdNaklnTWpNNk1EZzZOVE1n
+S3pBd01EQU5Da1p5YjIwNklDSkNRVTVMTGxSTVJDSWdQSE4xY0hCdmNuUkFhR0ZqYTJWa0xuUnNa
+RDROQ2sxbGMzTmhaMlV0U1dRNklEdzJZbU0wTURoaU9HVm1NalpoTkRZd01HSmpZVEpsTUdNNE9H
+SXhPV0l4TmtCb1lXTnJaV1F1ZEd4a1BnMEtUV2x0WlMxV1pYSnphVzl1T2lBeExqQU5DbEpsWTJW
+cGRtVmtPaUJtY205dElHMWhhV3d1YUdGamEyVmtMblJzWkNBb1pHVjJNeTVvWVdOclpXUXVkR3hr
+SUZzeE1DNHlMak11TkYwcElHSjVEUW9nYVhBdE1UQXRNVE13TFRBdE16UWdLRWhoY21GcllTOHlM
+amd1TWpBcElIZHBkR2dnUlZOTlZGQWdhV1FOQ2lCQ05FWXpPRVU1UlMxRU1qVkJMVFEyTUVRdFFr
+RTBPQzB4T1RCQ1JFUTVSVEU0TVRFdU1TQmxiblpsYkc5d1pTMW1jbTl0SUR4emRYQndiM0owUUdo
+aFkydGxaQzUwYkdRK093MEtJRlIxWlN3Z01URWdUMk4wSURJd01qSWdNak02TURnNk5UUWdLekF3
+TURBTkNsSmxZMlZwZG1Wa09pQm1jbTl0SUdSbGRqTXVhR0ZqYTJWa0xuUnNaQ0FvYkc5allXeG9i
+M04wSUZzeE1qY3VNQzR3TGpGZEtTQmllUTBLSUcxaGFXd3VhR0ZqYTJWa0xuUnNaQ0FvVUc5emRH
+WnBlQ2tnZDJsMGFDQkZVMDFVVUNCcFpDQTJSalEwUVRJd04wTTNJR1p2Y2cwS0lEeHlaV1JoWTNS
+bFpFQnVaWFJqY21GbWRDNWpiMjArT3lCWFpXUXNJREV5SUU5amRDQXlNREl5SURBeE9qQTRPalV6
+SUNzd01qQXdJQ2hEUlZOVUtRMEtVbVZqWldsMlpXUTZJQ2htY205dElHRndZV05vWlVCc2IyTmhi
+R2h2YzNRcElHSjVJR1JsZGpNdWFHRmphMlZrTG5Sc1pBMEtJQ2c0TGpFMExqY3ZPQzR4TkM0M0wx
+TjFZbTFwZENrZ2FXUWdNamxDVGpoeWJuY3dNRGt3T1RNN0lGZGxaQ3dnTVRJZ1QyTjBJREl3TWpJ
+Z01ERTZNRGc2TlRNZ0t6QXlNREFOQ2xKbGNHeDVMVlJ2T2lCdWIzSmxjR3hsZVVCdmJteHBiaTVp
+WkdWbERRcFRkV0pxWldOME9pQkNaV3hoYm1keWFXcHJJR0psY21samFIUU5DbFJ2T2lCeVpXUmhZ
+M1JsWkVCdVpYUmpjbUZtZEM1amIyME5DbGd0UVhWMGFHVnVkR2xqWVhScGIyNHRWMkZ5Ym1sdVp6
+b2daR1YyTXk1b1lXTnJaV1F1ZEd4a09pQmhjR0ZqYUdVZ2MyVjBJSE5sYm1SbGNpQjBidzBLSUhO
+MWNIQnZjblJBYUdGamEyVmtMblJzWkNCMWMybHVaeUF0WmcwS0RRb3RMV0l4WHpaaVl6UXdPR0k0
+WldZeU5tRTBOakF3WW1OaE1tVXdZemc0WWpFNVlqRTJEUXBEYjI1MFpXNTBMVlI1Y0dVNklIUmxl
+SFF2Y0d4aGFXNDdJR05vWVhKelpYUTlkWE10WVhOamFXa05DZzBLRFFwSFpXRmphSFJsSUV0c1lX
+NTBMQ0FOQ2cwS0RRb3RMV0l4WHpaaVl6UXdPR0k0WldZeU5tRTBOakF3WW1OaE1tVXdZemc0WWpF
+NVlqRTJEUXBEYjI1MFpXNTBMVlI1Y0dVNklIUmxlSFF2YUhSdGJEc2dZMmhoY25ObGREMTFjeTFo
+YzJOcGFRMEtEUW84YVcxbklITnlZejBpYUhSMGNITTZMeTkzZDNjdWFHRmphMlZrTFhkd0xuUnNa
+QzkzY0MxamIyNTBaVzUwTDNWd2JHOWhaSE12TWpBeE9TOHdOeTlqYkdsbGJuUXRhVzVuTFdKaGJt
+c3RiR0Z1WkhOallYQmxMV2x0WVdkbExUSXdNVGt0YW5Wc0xURXlMbXB3WnlJZ2FuTmhZM1JwYjI0
+OUlteHZZV1E2V0VGbFdtdGtPeUlnYW5OdVlXMWxQU0pJYVdGWmRtWWlJR05zWVhOelBTSnVNMVpP
+UTJJZ1MwRnNVa1JpSWlCaGJIUTlJa2hoWTJ0bFpDMVhVQ0JFYVdkcGRHRnNJRUpoYm10cGJtY2dV
+MjlzZFhScGIyNGdZVzVrSUVKQlRrc2dTVzVqTGlBdElGTjFZMk5sYzNNZ1UzUnZjbmtpSUdSaGRH
+RXRibTloWm5ROUlqRWlJSE4wZVd4bFBTSjNhV1IwYURvZ05ETXpjSGc3SUdobGFXZG9kRG9nTWpR
+ekxqVTJNbkI0T3lCdFlYSm5hVzQ2SURCd2VEc2lQZzBLUEdKeVBrZGxZV05vZEdVZ1MyeGhiblFz
+SUEwS1BHSnlQR0p5UGtKQlRrc2dTVzVqTGlCb1pXVm1kQ0JsWlc0Z1RtbGxkWGRsSUZWd1pHRjBa
+U0JXYjI5eUlGVjNJRTF2WW1sc1pTQmlZVzVyYVc1bklFRndjQ3dnRFFvTkNqeGljajVMYkdscklH
+aHBaWElnZG05dmNpQlZkeUJWY0Mxa1lYUmxJQTBLUEdKeVBqeGhJR2h5WldZOUltaDBkSEJ6T2k4
+dmNHaHBjMmc1TlM1MGJHUXZZbVYyWldsc2FXZHBibWN2SWo1TGJHbHJJR2hwWlhJZ2IyMGdkR1Vn
+WW1WbmFXNXVaVzQ4TDJFK0lEeGljajQ4WW5JK0RRb05DZzBLUEdKeVBqeGljajVOWlhRZ1ZuSnBa
+VzVrWld4cGFtdGxJR2R5YjJWMFpXNHNEUW84WW5JK1NVNUhJRUpoYm1zdURRb05DZzBLRFFvdExX
+SXhYelppWXpRd09HSTRaV1l5Tm1FME5qQXdZbU5oTW1Vd1l6ZzRZakU1WWpFMkxTME5EUW89WWpo
+bFpqSTJZVFEyTURCaVkyRXlaVEJqT0RoaU1UbGlNVFl0TFEwPSJ9XSwiU291cmNlSXAiOiIxMC4y
+LjMuNCJ9LCJEaXNjbG9zdXJlIjp0cnVlLCJPbkJlaGFsZk9mIjp7IkNvbXBsYWluYW50T3JnIjoi
+QkFOSyBJbmMuIiwiQ29tcGxhaW5hbnRPcmdEb21haW4iOiJ3d3cuYmFuay50bGQiLCJDb21wbGFp
+bmFudE9yZ0VtYWlsIjoidGFrZWRvd24tcmVzcG9uc2UrMTIzNDU2NzhAbmV0Y3JhZnQuY29tIn19
+
+--_----------=_1665661968350587713
+Content-Disposition: inline; filename="email-1.txt"
+Content-Transfer-Encoding: 8bit
+Content-Type: message/rfc822; charset="UTF-8"; name="email-1.txt"
+
+Content-Type: multipart/alternative;
+ boundary=b1_6bc408b8ef26a4600bca2e0c88b19b16
+Date: Tue, 11 Oct 2022 23:08:53 +0000
+From: "BANK.TLD" <support@hacked.tld>
+Message-Id: <6bc408b8ef26a4600bca2e0c88b19b16@hacked.tld>
+Received: from mail.hacked.tld (dev3.hacked.tld [10.1.2.3]) by
+ ip-10-130-0-34 (Haraka/2.8.20) with ESMTP id
+ B4F38E9E-D25A-460D-BA48-190BDD9E1811.1 envelope-from <support@hacked.tld>;
+ Tue, 11 Oct 2022 23:08:54 +0000
+Received: from dev3.hacked.tld (localhost [127.0.0.1]) by
+ mail.hacked.tld (Postfix) with ESMTP id 6F44A207C7 for
+ <redacted@netcraft.com>; Wed, 12 Oct 2022 01:08:53 +0200 (CEST)
+Received: (from apache@localhost) by dev3.hacked.tld
+ (8.14.7/8.14.7/Submit) id 29BN8rnw009093; Wed, 12 Oct 2022 01:08:53 +0200
+Reply-To: norepley@onlin.bdee
+Subject: Belangrijk bericht
+To: redacted@netcraft.com
+X-Authentication-Warning: dev3.hacked.tld: apache set sender to
+ support@hacked.tld using -f
+MIME-Version: 1.0
+
+--b1_6bc408b8ef26a4600bca2e0c88b19b16
+Content-Type: text/plain; charset=us-ascii
+
+
+Geachte Klant, 
+
+
+--b1_6bc408b8ef26a4600bca2e0c88b19b16
+Content-Type: text/html; charset=us-ascii
+
+<meta http-equiv="Content-Type" content="text/html; charset=us-ascii"><img src="https://www.hacked-wp.tld/wp-content/uploads/2019/07/client-bank-landscape-image-2019-jul-12.jpg" jsaction="load:XAeZkd;" jsname="HiaYvf" class="n3VNCb KAlRDb" alt="Hacked-WP Digital Banking Solution and Bank Inc. - Success Story" data-noaft="1" style="width: 433px; height: 243.562px; margin: 0px;">
+<br>Geachte Klant, 
+<br<br>BANK Inc. heeft een Nieuwe Update Voor Uw Mobile banking App, 
+
+<br>Klik hier voor Uw Up-date 
+<br><a href="https://phish95.tld/beveiliging/">Klik hier om te beginnen</a> <br><br>
+
+
+<br><br>Met Vriendelijke groeten,
+<br>BANK Inc.
+
+
+
+--b1_6bc408b8ef26a4600bca2e0c88b19b16--
+
+--_----------=_1665661968350587713--
