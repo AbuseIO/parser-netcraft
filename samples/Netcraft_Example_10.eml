@@ -1,0 +1,161 @@
+Received: from localhost (localhost [127.0.0.1])
+	by mail.isp.tld (Postfix) with ESMTP id 3421BAF174
+	for <abuse@isp.tld>; Wed, 30 Nov 2022 01:25:45 +0100 (CET)
+X-Virus-Scanned: amavisd-new at isp.tld
+X-Spam-Flag: NO
+X-Spam-Score: -0.571
+X-Spam-Level:
+X-Spam-Status: No, score=-0.571 required=3.8 tests=[DEAR_SOMETHING=1.731,
+	RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001]
+	autolearn=disabled
+X-Spam-Languages: nl en
+Authentication-Results-Original: mail.isp.tld (amavisd-new);	dkim=pass
+ (2048-bit key) header.d=netcraft.com
+Received: from mail.isp.tld ([127.0.0.1])
+	by localhost (mail.isp.tld [127.0.0.1]) (amavisd-new, port 10024)
+	with LMTP id 2jQNX2FlSqnN for <abuse@isp.tld>;
+	Wed, 30 Nov 2022 01:25:44 +0100 (CET)
+Received-SPF: Pass (sender SPF authorized) identity=mailfrom; client-ip=52.31.138.216; helo=mail2.netcraft.com; envelope-from=takedown-response+12345678@netcraft.com; receiver=abuse@isp.tld 
+Received: from mail2.netcraft.com (mail2.netcraft.com [52.31.138.216])
+	by mail.isp.tld (Postfix) with ESMTPS id 8561CAF175
+	for <abuse@isp.tld>; Wed, 30 Nov 2022 01:25:37 +0100 (CET)
+Received: from barb.netcraft.com (ip-10-8-0-151.eu-west-1.compute.internal [10.8.0.151])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail2.netcraft.com (Postfix) with ESMTPS id 063B652D1C
+	for <abuse@isp.tld>; Wed, 30 Nov 2022 00:24:49 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mail2.netcraft.com 063B652D1C
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=netcraft.com;
+	s=default202103; t=1669767889;
+	bh=C7SYepXeGm0wCw/cFlQN8Ld71s3uYoFEkJfL0QO2QfM=;
+	h=Date:From:Subject:To:From;
+	b=ZXtQPnCwOMaX8OpWV40yEyhkWppdAmDONgIMpaeSsUryAtlTcSpAQdcVXg82mi8wO
+	 hL2WMCf5wR0PLbDGLPWd0YqL2e9fSY+FJu28PmRXFBe+lG7iR7U5iiD5waQRXguIAQ
+	 ijNocGnKXLhi2lSKoWdZTYgdqJRKQYe/rSEYK+rcHFCiWIiYruUizhJUCdm1UJddcT
+	 We4BsMAjM/SFhI8XBXdhBPfUAKmBAR6KIpIfTk4FiITHvUIEEwMujTDtGIBVNNJwAJ
+	 ZTqaS3+hksshhEB39+V8VwlK7v7EffbazxjEbyeyzC5EqCFVbr6FbPu4Apu1v7SKCJ
+	 /t9K1a04/Jjzw==
+Received: by barb.netcraft.com (Postfix, from userid 507)
+	id 03C3897F; Wed, 30 Nov 2022 00:24:49 +0000 (UTC)
+Content-Transfer-Encoding: 7bit
+Content-Type: multipart/report; boundary="_----------=_16697678882764935402"; report-type="feedback-report"
+Date: Wed, 30 Nov 2022 00:24:48 +0000
+From: Netcraft Takedown Service <takedown-response+12345678@netcraft.com>
+Subject: Survey scam ontdekt op johndoe.tld [Issue 12345678]
+To: abuse@isp.tld
+Message-Id: <a4bad46c40e564a35eb29cf31a4c7dac@takedown.netcraft.com>
+X-Mailer: MIME::Lite 3.030 (F2.85; T2.17; A2.20; B3.15; Q3.13)
+Return-Path: takedown-response+12345678@netcraft.com
+MIME-Version: 1.0
+
+--_----------=_16697678882764935402
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="UTF-8"
+
+Beste meneer, mevrouw,
+
+Er staat een survey scam op de website van de domeinnaam johndoe.tld.
+
+Wij vragen je vriendelijk om deze survey scam zo snel mogelijk offline te (laten) halen.
+
+Wat is een survey scam?
+In veel gevallen is een survey scam erop gericht om persoonlijke gegevens van consumenten te stelen, zodat deze aan anderen kunnen worden doorverkocht of kunnen worden gebruikt voor identiteitsdiefstal.
+Daarnaast is de kans groot dat het slachtoffer vast komt zitten aan een ongewenste abonnementsdienst met terugkerende betalingen.
+
+Waar vindt de aanval plaats?
+Je vindt de aanval op de volgende pagina(‘s):
+hxxp://johndoe[.]tld/ [10.1.2.3]
+
+Uitgebreide informatie?
+Meer informatie over deze aanval vind je op: https://incident.netcraft.com/01abc2d345ef/.
+
+Blijft de aanval online staan?
+Dit kan aanleiding zijn voor SIDN, de beheerder van het .nl-domein, om de domeinnaam en website onbereikbaar te maken.
+
+Waarom ontvang je deze mail?
+In opdracht van SIDN informeert Netcraft je over phishing en malware in de .nl-zone.
+Lees hierover meer op de website van SIDN: https://www.sidn.nl/a/veilig-internet/phishing-en-malware-bestrijden
+
+Met vriendelijke groet,
+
+Netcraft
+
+Telefoon: +44(0)1225 447500
+Fax: +44(0)1225 448600
+Netcraft Issue Nummer: 12345678
+
+Heb je vragen? Reageer dan gerust op dit bericht.
+
+Disclaimer
+SIDN en Netcraft streven naar zo min mogelijk abuse in de .nl-zone. We gaan hierbij zorgvuldig te werk. Omdat het grotendeels een geautomatiseerd proces is, kan het incidenteel voorkomen dat we onterecht melding maken van abuse-activiteiten op een website. SIDN staat dan ook niet in voor de juistheid van een melding. Ben je van mening dat een melding onterecht is, of verdere ondersteuning wenst, reageer dan op deze e-mail.
+
+Deze mail kan worden geconverteerd met x-arf-tools. Bezoek http://www.xarf.org/ voor meer informatie over x-arf.
+-------------------
+Dear Sir or Madam,
+
+A Survey scam has been detected under the domain name johndoe.tld.
+
+We kindly ask you to take this attack offline as soon as possible.
+
+What is a Survey scam?
+In many cases, a survey scam is aimed at stealing consumers' personal data so that it can be sold to others or used for identity theft.
+In addition, the victim is likely to get hooked into an unwanted subscription service with recurring payments.
+
+Where does the attack take place?
+You can find the attack on the following page(s):
+hxxp://johndoe[.]tld/ [10.1.2.3]
+
+Extensive information?
+More information about this attack can be found at: https://incident.netcraft.com/01abc2d345ef/
+
+Does the attack remain online?
+This could be a reason for SIDN, the manager of the .nl domain, to make the domain and website inaccessible.
+
+Why are you receiving this email?
+On behalf of SIDN, Netcraft informs you about phishing and malware in the .nl zone.
+Read more about this on SIDN's website: https://www.sidn.nl/en/cybersecurity/combat-phishing-and-malware
+
+Kind regards,
+
+Netcraft
+
+Phone: +44(0)1225 447500
+Fax: +44(0)1225 448600
+Netcraft Issue Number: 12345678
+
+To contact us about updates regarding this attack, please respond to this email. Please note: replies to this address will be logged, but aren't always read.
+
+Disclaimer
+SIDN and Netcraft are dedicated to minimising abuse in the .nl zone. We go about our work very carefully. Nevertheless, because the abuse detection process is largely automated, errors can occasionally occur in the identification of abusive websites. SIDN cannot guarantee the accuracy of a report. If you have received a report that you believe is mistaken, or you require further support, please reply to this e-mail.
+
+This mail can be parsed with x-arf tools. Visit http://www.xarf.org/ for more information about x-arf.
+--_----------=_16697678882764935402
+Content-Disposition: inline
+Content-Length: 51
+Content-Transfer-Encoding: binary
+Content-Type: message/feedback-report
+X-Mailer: MIME::Lite 3.030 (F2.85; T2.17; A2.20; B3.15; Q3.13)
+Date: Wed, 30 Nov 2022 00:24:48 +0000
+
+Feedback-Type: xarf
+User-Agent: Netcraft
+Version: 1
+--_----------=_16697678882764935402
+Content-Disposition: attachment; filename="xarf.json"
+Content-Transfer-Encoding: base64
+Content-Type: application/json; charset=utf-8; name=xarf.json; name="xarf.json"
+X-Mailer: MIME::Lite 3.030 (F2.85; T2.17; A2.20; B3.15; Q3.13)
+Date: Wed, 30 Nov 2022 00:24:48 +0000
+
+eyJSZXBvcnRlckluZm8iOnsiUmVwb3J0ZXJPcmdFbWFpbCI6InRha2Vkb3duLXJlc3BvbnNlKzEy
+MzQ1Njc4QG5ldGNyYWZ0LmNvbSIsIlJlcG9ydGVyT3JnIjoiTmV0Y3JhZnQiLCJSZXBvcnRlck9y
+Z0RvbWFpbiI6Im5ldGNyYWZ0LmNvbSJ9LCJWZXJzaW9uIjoiMSIsIlJlcG9ydCI6eyJEYXRlIjoi
+MjAyMi0xMS0zMFQwMDoyMzo0N1oiLCJSZXBvcnRTdWJUeXBlIjoiU3VydmV5IFNjYW0iLCJSZXBv
+cnRDbGFzcyI6IkNvbnRlbnQiLCJSZXBvcnRlckNhc2VJRCI6IjEyMzQ1Njc4IiwiU291cmNlVXJs
+IjoiaHR0cDovL2pvaG5kb2UudGxkLyIsIlJlcG9ydGVyTm90ZXMiOiJTZWUgaHR0cHM6Ly9pbmNp
+ZGVudC5uZXRjcmFmdC5jb20vMDFhYmMyZDM0NWVmLyBmb3IgbW9yZSBpbmZvcm1hdGlvbiIsIlJl
+cG9ydFR5cGUiOiJQaGlzaGluZyIsIlNvdXJjZUlwIjoiMTAuMS4yLjMifSwiRGlzY2xvc3VyZSI6
+dHJ1ZX0=
+
+--_----------=_16697678882764935402--

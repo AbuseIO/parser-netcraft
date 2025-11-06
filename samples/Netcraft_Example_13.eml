@@ -1,0 +1,119 @@
+Received: from localhost (localhost [127.0.0.1])
+	by mail.isp.tld (Postfix) with ESMTP id 25884AF16E
+	for <abuse@isp.tld>; Mon, 28 Nov 2022 00:27:45 +0100 (CET)
+X-Virus-Scanned: amavisd-new at isp.tld
+X-Spam-Flag: NO
+X-Spam-Score: -2.302
+X-Spam-Level:
+X-Spam-Status: No, score=-2.302 required=3.8 tests=[RCVD_IN_DNSWL_MED=-2.3,
+	SPF_HELO_PASS=-0.001, SPF_PASS=-0.001] autolearn=disabled
+X-Spam-Languages: en nl af da
+Authentication-Results-Original: mail.isp.tld (amavisd-new);	dkim=pass
+ (2048-bit key) header.d=netcraft.com
+Received: from mail.isp.tld ([127.0.0.1])
+	by localhost (mail.isp.tld [127.0.0.1]) (amavisd-new, port 10024)
+	with LMTP id 5JX_LFKLB5Y8 for <abuse@isp.tld>;
+	Mon, 28 Nov 2022 00:27:44 +0100 (CET)
+Received-SPF: Pass (sender SPF authorized) identity=mailfrom; client-ip=52.31.138.216; helo=mail2.netcraft.com; envelope-from=takedown-response+12345678@netcraft.com; receiver=abuse@isp.tld 
+Received: from mail2.netcraft.com (mail2.netcraft.com [52.31.138.216])
+	by mail.isp.tld (Postfix) with ESMTPS id 635D0AF173
+	for <abuse@isp.tld>; Mon, 28 Nov 2022 00:27:39 +0100 (CET)
+Received: from barb.netcraft.com (ip-10-8-0-151.eu-west-1.compute.internal [10.8.0.151])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail2.netcraft.com (Postfix) with ESMTPS id 1903F4BE46
+	for <abuse@isp.tld>; Sun, 27 Nov 2022 23:27:37 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mail2.netcraft.com 1903F4BE46
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=netcraft.com;
+	s=default202103; t=1669591657;
+	bh=wxUSYi6fB6JXVNaWfoZit2LHTUUw7A9ygoi9aV5yFW0=;
+	h=Date:From:Subject:To:From;
+	b=Dh/WoAZgRhFS1FVzYZVHJgwc53vF5H9DRuJG0UWJoLnmDgxs8rBY52uP4bi05WZSc
+	 9cZEgjddHxo/K9KruTgGk5R6R+FBPeuhrKecoAPH1IjkNU/cFTaPxYJF2Ecfl9NYgb
+	 p71+ba68FT07kGeVWNIbCCnUF/5HNCxI9QUMNzTjaT7nOxfb3GnIA/4Cg1+mtGZcfL
+	 QfEhDYJg04XHXWSj9Fzic6ecIKRHYoP4/VuzLDSKwYdgkaJN4kpppPa4wi8STjslw3
+	 /Eo9QlHWDl3gR0Bwr7HOAOSqwTkzRfB5sgx6a3gKlqFg2mwDllohAFwnzLPfucQ5iV
+	 RPJyE3vxjV+cQ==
+Received: by barb.netcraft.com (Postfix, from userid 507)
+	id 16489BE5; Sun, 27 Nov 2022 23:27:37 +0000 (UTC)
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: MIME::Lite 3.030 (F2.85; T2.17; A2.20; B3.15; Q3.13)
+Date: Sun, 27 Nov 2022 23:27:37 +0000
+From: Netcraft Takedown Service <takedown-response+12345678@netcraft.com>
+Subject: Issue 12345678: Brute force attack at 10.1.2.3
+To: abuse@isp.tld
+Message-Id: <68641d9c5c3de993b84d656d79149d82@takedown.netcraft.com>
+Return-Path: takedown-response+12345678@netcraft.com
+MIME-Version: 1.0
+
+Hallo,
+
+Een IP-adres binnen uw gedelegeerde ruimte is momenteel betrokken bij een voortdurende brute force-aanval op de volgende services:
+
+ * SSH (Secure Shell)
+
+We hebben meer dan 6 inlogpogingen waargenomen binnen een periode van 6 uur afkomstig van het volgende IP-adres:
+
+10.1.2.3
+
+We hebben voor het laatst een kwaadaardige inlogpoging waargenomen vanaf dit IP-adres op 2022-11-27 23:27:05 UTC.
+
+SSH (Secure Shell) (6 total)
+Date	Source IP	Target IP
+2022-11-27 23:27:05	10.1.2.3	192.168.0.0/24
+2022-11-27 23:25:52	10.1.2.3	192.168.0.0/24
+2022-11-27 23:24:41	10.1.2.3	192.168.0.0/24
+2022-11-27 23:23:31	10.1.2.3	192.168.0.0/24
+2022-11-27 23:22:19	10.1.2.3	192.168.0.0/24
+2022-11-27 23:19:49	10.1.2.3	192.168.0.0/24
+
+Onderzoek de bron van de kwaadaardige inlogpogingen en onderneem actie om de aanval zo snel mogelijk te stoppen.
+
+Meer informatie over het gedetecteerde probleem vindt u op: https://incident.netcraft.com/a01bcdef123a4/
+
+Met vriendelijke groet,
+
+Netcraft
+
+Telefoon: +44(0)1225 447500
+Fax: +44(0)1225 448600
+Netcraft Issue Nummer: 12345678
+
+Geef een reply op deze mail voor contact met ons over deze melding. Let op: reacties worden wel geregistreerd, maar niet altijd gelezen. Ben je van mening dat een melding onterecht is, of verdere ondersteuning wenst, meld dit dan aan: takedown@netcraft.com.
+-------------------
+Hello,
+
+An IP address within your delegated space is currently involved in an ongoing brute force attack against the following services:
+
+ * SSH (Secure Shell)
+
+We have observed more than 6 login attempts within a 6 hour period originating from the following IP address:
+
+10.1.2.3
+
+We last observed a malicious login attempt from this IP address at 2022-11-27 23:27:05 UTC.
+
+SSH (Secure Shell) (6 total)
+Date	Source IP	Target IP
+2022-11-27 23:27:05	10.1.2.3	192.168.0.0/24
+2022-11-27 23:25:52	10.1.2.3	192.168.0.0/24
+2022-11-27 23:24:41	10.1.2.3	192.168.0.0/24
+2022-11-27 23:23:31	10.1.2.3	192.168.0.0/24
+2022-11-27 23:22:19	10.1.2.3	192.168.0.0/24
+2022-11-27 23:19:49	10.1.2.3	192.168.0.0/24
+
+Please investigate the source of the malicious login attempts and take action to stop the attack as soon as possible.
+
+More information about the detected issue is provided at https://incident.netcraft.com/a01bcdef123a4/
+
+Many thanks,
+
+Netcraft
+
+Phone: +44(0)1225 447500
+Fax: +44(0)1225 448600
+Netcraft Issue Number: 12345678
+
+To contact us about updates regarding this attack, please respond to this email. Please note: replies to this address will be logged, but aren't always read. If you believe you have received this email in error, or you require further support, please contact: takedown@netcraft.com.

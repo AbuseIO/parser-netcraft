@@ -1,0 +1,161 @@
+Received: from localhost (localhost [127.0.0.1])
+	by mail.isp.tld (Postfix) with ESMTP id C11F0AF17C
+	for <abuse@isp.tld>; Mon, 24 Oct 2022 11:32:05 +0200 (CEST)
+X-Virus-Scanned: amavisd-new at isp.tld
+X-Spam-Flag: NO
+X-Spam-Score: -0.571
+X-Spam-Level:
+X-Spam-Status: No, score=-0.571 required=3.8 tests=[DEAR_SOMETHING=1.731,
+	RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001]
+	autolearn=disabled
+X-Spam-Languages: nl en af
+Authentication-Results-Original: mail.isp.tld (amavisd-new);	dkim=pass
+ (2048-bit key) header.d=netcraft.com
+Received: from mail.isp.tld ([127.0.0.1])
+	by localhost (mail.isp.tld [127.0.0.1]) (amavisd-new, port 10024)
+	with LMTP id KJF84W_7P14j for <abuse@isp.tld>;
+	Mon, 24 Oct 2022 11:32:05 +0200 (CEST)
+Received-SPF: Pass (sender SPF authorized) identity=mailfrom; client-ip=52.31.138.216; helo=mail2.netcraft.com; envelope-from=takedown-response+12345678@netcraft.com; receiver=abuse@isp.tld 
+Received: from mail2.netcraft.com (mail2.netcraft.com [52.31.138.216])
+	by mail.isp.tld (Postfix) with ESMTPS id 5FB6FAF178
+	for <abuse@isp.tld>; Mon, 24 Oct 2022 11:32:05 +0200 (CEST)
+Received: from walleye.netcraft.com (ip-10-8-0-81.eu-west-1.compute.internal [10.8.0.81])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail2.netcraft.com (Postfix) with ESMTPS id 1CD825E7F5
+	for <abuse@isp.tld>; Mon, 24 Oct 2022 10:32:05 +0100 (BST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mail2.netcraft.com 1CD825E7F5
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=netcraft.com;
+	s=default202103; t=1666603925;
+	bh=32JwedJmf/YE+rljm4jy6QPnFWGMdPWBh3q4G+R7sDM=;
+	h=Date:From:Subject:To:From;
+	b=NgPArBrflIpBY1xDssWZrk2dDf1LVWgTM2sUsrHqnGL6Ca0E+wEwxgxHe5Gb6oWw4
+	 ECWutqeXu0hNEPU3ndzNqA3F9IDED/zvUj160G6l/BXmYNAGmM6v0s5wZehGe/XaM5
+	 R7ILalVMTKFpLf+6EKq+7o04gvp4tBjFfZ+DVzor1gK3vuUEhqhth9VW7b7HQ2Wn9c
+	 NbtzPmpsQeWmmBAiVDrZ5fN2g0sgd5vBkqE6GmO0TDp9rWP6yodUeiLA5Qhnio0wp5
+	 AxpaGeVfcx5/jTWf4gqLMtSEPUGnKTJINbNHLcNGH9lX/dazA/VwJx+n3s8hdUPm6v
+	 9nPRYLW6AyXQQ==
+Received: by walleye.netcraft.com (Postfix, from userid 507)
+	id 0EE64DF3; Mon, 24 Oct 2022 09:32:05 +0000 (UTC)
+Content-Transfer-Encoding: 7bit
+Content-Type: multipart/report; boundary="_----------=_166660392417032885410"; report-type="feedback-report"
+Date: Mon, 24 Oct 2022 09:32:04 +0000
+From: Netcraft Takedown Service <takedown-response+12345678@netcraft.com>
+Subject: Illegale webshell ontdekt op hacked.tld [Issue 12345678]
+To: abuse@isp.tld
+Message-Id: <a5ddd79f92e2cfb1e456222a80489dfe@takedown.netcraft.com>
+X-Mailer: MIME::Lite 3.030 (F2.85; T2.17; A2.20; B3.15; Q3.13)
+Return-Path: takedown-response+12345678@netcraft.com
+MIME-Version: 1.0
+
+--_----------=_166660392417032885410
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="UTF-8"
+
+Beste meneer, mevrouw,
+
+Er staat een illegale webshell onder de domeinnaam hacked.tld.
+
+Wij vragen je vriendelijk om deze webshell zo snel mogelijk offline te (laten) halen.
+
+Wat is een webshell?
+Een webshell maakt het mogelijk om op afstand toegang te krijgen tot een webserver, vaak met het oog op cyberaanvallen.
+
+Waar vindt de aanval plaats?
+Je vindt de aanval op de volgende pagina(‘s):
+hxxp://hacked[.]tld/wp-content/nZIaExHlFgK.php [10.1.2.3]
+
+Uitgebreide informatie?
+Meer informatie over deze aanval vind je op: https://incident.netcraft.com/a0bcd1f2a34b/.
+
+Blijft de aanval online staan?
+Dit kan aanleiding zijn voor SIDN, de beheerder van het .nl-domein, om de domeinnaam en website onbereikbaar te maken.
+
+Waarom ontvang je deze mail?
+In opdracht van SIDN informeert Netcraft je over phishing en malware in de .nl-zone.
+Lees hierover meer op de website van SIDN: https://www.sidn.nl/a/veilig-internet/phishing-en-malware-bestrijden
+
+Met vriendelijke groet,
+
+Netcraft
+
+Telefoon: +44(0)1225 447500
+Fax: +44(0)1225 448600
+Netcraft Issue Nummer: 12345678
+
+Heb je vragen? Reageer dan gerust op dit bericht.
+
+Disclaimer
+SIDN en Netcraft streven naar zo min mogelijk abuse in de .nl-zone. We gaan hierbij zorgvuldig te werk. Omdat het grotendeels een geautomatiseerd proces is, kan het incidenteel voorkomen dat we onterecht melding maken van abuse-activiteiten op een website. SIDN staat dan ook niet in voor de juistheid van een melding. Ben je van mening dat een melding onterecht is, of verdere ondersteuning wenst, reageer dan op deze e-mail.
+
+Deze mail kan worden geconverteerd met x-arf-tools. Bezoek http://www.xarf.org/ voor meer informatie over x-arf.
+-------------------
+Dear Sir or Madam,
+
+An illegal web shell has been detected under the domain name hacked.tld.
+
+We kindly ask you to take this attack offline as soon as possible.
+
+What is a web shell?
+A web shell enables a web server to be remotely accessed, often for the purposes of cyberattacks.
+
+Where does the attack take place?
+You can find the attack on the following page(s):
+hxxp://hacked[.]tld/wp-content/nZIaExHlFgK.php [10.1.2.3]
+
+Extensive information?
+More information about this attack can be found at: https://incident.netcraft.com/a0bcd1f2a34b/
+
+Does the attack remain online?
+This could be a reason for SIDN, the manager of the .nl domain, to make the domain and website inaccessible.
+
+Why are you receiving this email?
+On behalf of SIDN, Netcraft informs you about phishing and malware in the .nl zone.
+Read more about this on SIDN's website: https://www.sidn.nl/en/cybersecurity/combat-phishing-and-malware
+
+Kind regards,
+
+Netcraft
+
+Phone: +44(0)1225 447500
+Fax: +44(0)1225 448600
+Netcraft Issue Number: 12345678
+
+To contact us about updates regarding this attack, please respond to this email. Please note: replies to this address will be logged, but aren't always read.
+
+Disclaimer
+SIDN and Netcraft are dedicated to minimising abuse in the .nl zone. We go about our work very carefully. Nevertheless, because the abuse detection process is largely automated, errors can occasionally occur in the identification of abusive websites. SIDN cannot guarantee the accuracy of a report. If you have received a report that you believe is mistaken, or you require further support, please reply to this e-mail.
+
+This mail can be parsed with x-arf tools. Visit http://www.xarf.org/ for more information about x-arf.
+--_----------=_166660392417032885410
+Content-Disposition: inline
+Content-Length: 51
+Content-Transfer-Encoding: binary
+Content-Type: message/feedback-report
+X-Mailer: MIME::Lite 3.030 (F2.85; T2.17; A2.20; B3.15; Q3.13)
+Date: Mon, 24 Oct 2022 09:32:04 +0000
+
+Feedback-Type: xarf
+User-Agent: Netcraft
+Version: 1
+--_----------=_166660392417032885410
+Content-Disposition: attachment; filename="xarf.json"
+Content-Transfer-Encoding: base64
+Content-Type: application/json; charset=utf-8; name=xarf.json; name="xarf.json"
+X-Mailer: MIME::Lite 3.030 (F2.85; T2.17; A2.20; B3.15; Q3.13)
+Date: Mon, 24 Oct 2022 09:32:04 +0000
+
+eyJWZXJzaW9uIjoiMSIsIlJlcG9ydCI6eyJTb3VyY2VJcCI6IjEwLjEuMi4zIiwiUmVwb3J0VHlw
+ZSI6Ik1hbHdhcmUiLCJEYXRlIjoiMjAyMi0xMC0yNFQwOToyOTozMFoiLCJSZXBvcnRDbGFzcyI6
+IkNvbnRlbnQiLCJTb3VyY2VVcmwiOiJodHRwOi8vaGFja2VkLnRsZC93cC1jb250ZW50L25aSWFF
+eEhsRmdLLnBocCIsIlJlcG9ydGVyQ2FzZUlEIjoiMTIzNDU2NzgiLCJSZXBvcnRlck5vdGVzIjoi
+U2VlIGh0dHBzOi8vaW5jaWRlbnQubmV0Y3JhZnQuY29tL2EwYmNkMWYyYTM0Yi8gZm9yIG1vcmUg
+aW5mb3JtYXRpb24ifSwiT25CZWhhbGZPZiI6eyJDb21wbGFpbmFudE9yZyI6IlNJRE4iLCJDb21w
+bGFpbmFudE9yZ0RvbWFpbiI6Ind3dy5zaWRuLm5sIiwiQ29tcGxhaW5hbnRPcmdFbWFpbCI6InRh
+a2Vkb3duLXJlc3BvbnNlKzEyMzQ1Njc4QG5ldGNyYWZ0LmNvbSJ9LCJSZXBvcnRlckluZm8iOnsi
+UmVwb3J0ZXJPcmdEb21haW4iOiJuZXRjcmFmdC5jb20iLCJSZXBvcnRlck9yZyI6Ik5ldGNyYWZ0
+IiwiUmVwb3J0ZXJPcmdFbWFpbCI6InRha2Vkb3duLXJlc3BvbnNlKzEyMzQ1Njc4QG5ldGNyYWZ0
+LmNvbSJ9LCJEaXNjbG9zdXJlIjp0cnVlfQ==
+
+--_----------=_166660392417032885410--
